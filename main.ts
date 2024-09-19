@@ -90,12 +90,11 @@ function createAction(player: Player): HTMLButtonElement {
   addButton.textContent = `add ${playerFirstName} to Current Team`;
 
   addButton.addEventListener("click", () => addDetailsToTeam(player));
-  // addButton.onclick = () => addDetailsToTeam(player);
 
   return addButton;
 }
 
-function createDetails(player: Player): HTMLDivElement {
+function createDetails(player: Player): HTMLDivElement[] {
   const playerName: HTMLDivElement = document.createElement("div");
   const Points: HTMLDivElement = document.createElement("div");
   const twoPercent: HTMLDivElement = document.createElement("div");
@@ -106,20 +105,35 @@ function createDetails(player: Player): HTMLDivElement {
   twoPercent.innerText = `Two Percents : ${player.twoPercent}%`;
   Points.innerText = `Points : ${player.points}`;
 
-  const divWarper: HTMLDivElement = document.createElement("div");
-  divWarper.append(playerName, Points, twoPercent, threePercent);
-  return divWarper;
+  return [playerName, Points, twoPercent, threePercent];
 }
 function addDetailsToTeam(player: Player): void {
-  const details: HTMLDivElement = createDetails(player);
+  const details: HTMLDivElement[] = createDetails(player);
   const divElement: HTMLDivElement = document.querySelector(
     `#${player.position} > .details`
   ) as HTMLDivElement;
   divElement.innerHTML = "";
-  divElement.append(details);
+  details.forEach((detail) => {
+    divElement.append(detail);
+  });
 }
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   await refreshTable(event);
 });
+window.onload = () => {
+  const sliders = document.getElementsByTagName(
+    "input"
+  ) as HTMLCollectionOf<HTMLInputElement>;
+
+  for (let i = 0; i < 3; i++) {
+    sliders[i].addEventListener("input", () => {
+      const theBlackLabel: HTMLSpanElement = sliders[
+        i
+      ].parentElement?.querySelector(".slider-label") as HTMLSpanElement;
+      theBlackLabel.textContent = sliders[i].value.toString();
+      sliders[i].title = sliders[i].value.toString();
+    });
+  }
+};

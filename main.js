@@ -82,7 +82,6 @@ function createAction(player) {
     const playerFirstName = player.playerName.split(" ")[0];
     addButton.textContent = `add ${playerFirstName} to Current Team`;
     addButton.addEventListener("click", () => addDetailsToTeam(player));
-    // addButton.onclick = () => addDetailsToTeam(player);
     return addButton;
 }
 function createDetails(player) {
@@ -94,17 +93,28 @@ function createDetails(player) {
     threePercent.innerText = `Three Percents : ${player.threePercent}%`;
     twoPercent.innerText = `Two Percents : ${player.twoPercent}%`;
     Points.innerText = `Points : ${player.points}`;
-    const divWarper = document.createElement("div");
-    divWarper.append(playerName, Points, twoPercent, threePercent);
-    return divWarper;
+    return [playerName, Points, twoPercent, threePercent];
 }
 function addDetailsToTeam(player) {
     const details = createDetails(player);
     const divElement = document.querySelector(`#${player.position} > .details`);
     divElement.innerHTML = "";
-    divElement.append(details);
+    details.forEach((detail) => {
+        divElement.append(detail);
+    });
 }
 searchForm.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
     yield refreshTable(event);
 }));
+window.onload = () => {
+    const sliders = document.getElementsByTagName("input");
+    for (let i = 0; i < 3; i++) {
+        sliders[i].addEventListener("input", () => {
+            var _a;
+            const theBlackLabel = (_a = sliders[i].parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(".slider-label");
+            theBlackLabel.textContent = sliders[i].value.toString();
+            sliders[i].title = sliders[i].value.toString();
+        });
+    }
+};

@@ -8,78 +8,102 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   </head>
   <body>
-    <nav>
-      <div>NBA FANTASY 2014-2024</div>
-    </nav>
+    <header><h1>NBA FANTASY 2014-2024</h1></header>
+    <main>
+      <section id="team-page">
+        <h1>My Fantasy Team</h1>
+        <div class="card-container">
+          <div class="card" id="PG">
+            <h4>Point Guard</h4>
+            <div class="details"></div>
+          </div>
+          <div class="card" id="SG">
+            <h4>Shooting Guard</h4>
+            <div class="details"></div>
+          </div>
+          <div class="card" id="SF">
+            <h4>Small Forward</h4>
+            <div class="details"></div>
+          </div>
+          <div class="card" id="PF">
+            <h4>Power Forward</h4>
+            <div class="details"></div>
+          </div>
+          <div class="card" id="C">
+            <h4>Center</h4>
+            <div class="details"></div>
+          </div>
+        </div>
+      </section>
 
-    <h1>My Fantasy Team</h1>
-    <section id="team-page">
-      <div class="card-container">
-        <div class="card" id="PG">
-          <span>Point Guard</span>
-          <div class="details"></div>
-        </div>
-        <div class="card" id="SG">
-          <span>Shooting Guard</span>
-          <div class="details"></div>
-        </div>
-        <div class="card" id="SF">
-          <span>Small Forward</span>
-          <div class="details"></div>
-        </div>
-        <div class="card" id="PF">
-          <span>Power Forward</span>
-          <div class="details"></div>
-        </div>
-        <div class="card" id="C">
-          <span>Center</span>
-          <div class="details"></div>
-        </div>
-      </div>
-    </section>
+      <section id="search-page">
+        <h1>NBA Player Search</h1>
+        <form>
+          <select id="position" name="position" required>
+            <option value="PG">PG</option>
+            <option value="SG">SG</option>
+            <option value="SF">SF</option>
+            <option value="PF">PF</option>
+            <option value="C">C</option>
+          </select>
+          <div class="slider-wrapper">
+            <span class="slider-label">Points</span>
+            <input
+              id="points"
+              name="points"
+              type="range"
+              title="Points"
+              min="0"
+              max="20000"
+            />
+          </div>
+          <div class="slider-wrapper">
+            <span class="slider-label">Field Goal %</span>
+            <input
+              id="FG"
+              name="FG"
+              type="range"
+              title="Field Goal %"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="slider-wrapper">
+            <span class="slider-label">3-Point %</span>
+            <input
+              id="3P"
+              name="3P"
+              type="range"
+              title="3-Point %"
+              min="0"
+              max="100"
+            />
+          </div>
+          <input
+            value="Search Player"
+            id="submit"
+            name="submit"
+            type="submit"
+          />
+        </form>
+      </section>
 
-    <div>NBA Player Search</div>
-    <section id="search-page" class="flex-center">
-      <form>
-        <select id="position" name="position" required>
-          <option value="PG">PG</option>
-          <option value="SG">SG</option>
-          <option value="SF">SF</option>
-          <option value="PF">PF</option>
-          <option value="C">C</option>
-        </select>
-        <span>
-          Points
-          <input id="points" name="points" type="range" min="0" max="20000" />
-        </span>
-        <span>
-          Field Goal %
-          <input id="FG" name="FG" type="range" min="0" max="100" />
-        </span>
-        <span>
-          3-Point %
-          <input id="3P" name="3P" type="range" min="0" max="100" />
-        </span>
-        <input value="Search Player" id="submit" name="submit" type="submit" />
-      </form>
-    </section>
-
-    <section id="table-page">
-      <table>
-        <thead class="header-title">
-          <tr>
-            <th>Player</th>
-            <th>Position</th>
-            <th>Points</th>
-            <th>FG%</th>
-            <th>3P%</th>
-            <th id="action">Action</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-
+      <section id="table-page">
+        <table>
+          <thead class="header-title">
+            <tr>
+              <th>Player</th>
+              <th>Position</th>
+              <th>Points</th>
+              <th>FG%</th>
+              <th>3P%</th>
+              <th id="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
     <script type="module" src="main.js"></script>
   </body>
 </html>
