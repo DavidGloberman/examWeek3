@@ -65,15 +65,9 @@ section {
   }
 }
 
-/* .sectionTitle {
-  color: #17408b;
-  padding: 20px;
-  font-size: 30px;
-} */
-
 form {
   margin: 30px;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   font-weight: bold;

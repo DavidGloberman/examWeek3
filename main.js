@@ -107,7 +107,7 @@ searchForm.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 
     event.preventDefault();
     yield refreshTable(event);
 }));
-window.onload = () => {
+function addEventListenerForSliders() {
     const sliders = document.getElementsByTagName("input");
     for (let i = 0; i < 3; i++) {
         sliders[i].addEventListener("input", () => {
@@ -117,4 +117,7 @@ window.onload = () => {
             sliders[i].title = sliders[i].value.toString();
         });
     }
+}
+window.onload = () => {
+    addEventListenerForSliders();
 };
