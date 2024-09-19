@@ -89,15 +89,11 @@ function createAction(player: Player): HTMLButtonElement {
   const playerFirstName: string = (player.playerName as string).split(" ")[0];
   addButton.textContent = `add ${playerFirstName} to Current Team`;
 
-  addButton.onclick = () => addDetailsToTeam(player);
+  addButton.addEventListener("click", () => addDetailsToTeam(player));
+  // addButton.onclick = () => addDetailsToTeam(player);
 
   return addButton;
 }
-
-searchForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  await refreshTable(event);
-});
 
 function createDetails(player: Player): HTMLDivElement {
   const playerName: HTMLDivElement = document.createElement("div");
@@ -114,7 +110,16 @@ function createDetails(player: Player): HTMLDivElement {
   divWarper.append(playerName, Points, twoPercent, threePercent);
   return divWarper;
 }
-function addDetailsToTeam(player: Player): void {}
-// window.onload = async () => {
-//   await refreshTable();
-// };
+function addDetailsToTeam(player: Player): void {
+  const details: HTMLDivElement = createDetails(player);
+  const divElement: HTMLDivElement = document.querySelector(
+    `#${player.position} > .details`
+  ) as HTMLDivElement;
+  divElement.innerHTML = "";
+  divElement.append(details);
+}
+
+searchForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  await refreshTable(event);
+});

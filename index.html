@@ -17,23 +17,23 @@
       <div class="card-container">
         <div class="card" id="PG">
           <span>Point Guard</span>
-          <div class="datails"></div>
+          <div class="details"></div>
         </div>
         <div class="card" id="SG">
           <span>Shooting Guard</span>
-          <div class="datails"></div>
+          <div class="details"></div>
         </div>
         <div class="card" id="SF">
           <span>Small Forward</span>
-          <div class="datails"></div>
+          <div class="details"></div>
         </div>
         <div class="card" id="PF">
           <span>Power Forward</span>
-          <div class="datails"></div>
+          <div class="details"></div>
         </div>
         <div class="card" id="C">
           <span>Center</span>
-          <div class="datails"></div>
+          <div class="details"></div>
         </div>
       </div>
     </section>
@@ -48,9 +48,18 @@
           <option value="PF">PF</option>
           <option value="C">C</option>
         </select>
-        <input id="points" name="points" type="range" min="0" max="20000" />
-        <input id="FG" name="FG" type="range" min="0" max="100" />
-        <input id="3P" name="3P" type="range" min="0" max="100" />
+        <span>
+          Points
+          <input id="points" name="points" type="range" min="0" max="20000" />
+        </span>
+        <span>
+          Field Goal %
+          <input id="FG" name="FG" type="range" min="0" max="100" />
+        </span>
+        <span>
+          3-Point %
+          <input id="3P" name="3P" type="range" min="0" max="100" />
+        </span>
         <input value="Search Player" id="submit" name="submit" type="submit" />
       </form>
     </section>

@@ -81,14 +81,11 @@ function createAction(player) {
     const addButton = document.createElement("button");
     const playerFirstName = player.playerName.split(" ")[0];
     addButton.textContent = `add ${playerFirstName} to Current Team`;
-    addButton.onclick = () => addDetailsToTeam(player);
+    addButton.addEventListener("click", () => addDetailsToTeam(player));
+    // addButton.onclick = () => addDetailsToTeam(player);
     return addButton;
 }
-searchForm.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
-    event.preventDefault();
-    yield refreshTable(event);
-}));
-function addDetailsToTeam(player) {
+function createDetails(player) {
     const playerName = document.createElement("div");
     const Points = document.createElement("div");
     const twoPercent = document.createElement("div");
@@ -97,7 +94,17 @@ function addDetailsToTeam(player) {
     threePercent.innerText = `Three Percents : ${player.threePercent}%`;
     twoPercent.innerText = `Two Percents : ${player.twoPercent}%`;
     Points.innerText = `Points : ${player.points}`;
+    const divWarper = document.createElement("div");
+    divWarper.append(playerName, Points, twoPercent, threePercent);
+    return divWarper;
 }
-// window.onload = async () => {
-//   await refreshTable();
-// };
+function addDetailsToTeam(player) {
+    const details = createDetails(player);
+    const divElement = document.querySelector(`#${player.position} > .details`);
+    divElement.innerHTML = "";
+    divElement.append(details);
+}
+searchForm.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
+    event.preventDefault();
+    yield refreshTable(event);
+}));
